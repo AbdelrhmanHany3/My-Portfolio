@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,49 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        body {
+            font-family: 'Inter', sans-serif;
         }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .gradient-text {
             background: linear-gradient(to right, #818cf8, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
         }
     </style>
     <script>
@@ -36,22 +70,47 @@
         }
     </script>
 </head>
+
 <body class="bg-slate-950 text-slate-200 selection:bg-indigo-500 selection:text-white pb-20">
 
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-indigo-400 tracking-tighter cursor-pointer hover:text-white transition-colors" onclick="scrollToSection('home')">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-indigo-400 tracking-tighter cursor-pointer hover:text-white transition-colors"
+                onclick="scrollToSection('cover')">
                 AH<span class="text-indigo-600">.</span>
             </div>
-            
-            <div class="hidden xl:flex space-x-6 text-xs font-medium">
-                <button onclick="scrollToSection('home')" class="nav-item hover:text-indigo-400 transition-colors uppercase tracking-wide text-indigo-400" data-target="home">Home</button>
-                <button onclick="scrollToSection('about')" class="nav-item hover:text-indigo-400 transition-colors uppercase tracking-wide text-slate-400" data-target="about">About</button>
-                <button onclick="scrollToSection('skills')" class="nav-item hover:text-indigo-400 transition-colors uppercase tracking-wide text-slate-400" data-target="skills">Skills</button>
-                <button onclick="scrollToSection('projects')" class="nav-item hover:text-indigo-400 transition-colors uppercase tracking-wide text-slate-400" data-target="projects">Projects</button>
-                <button onclick="scrollToSection('experience')" class="nav-item hover:text-indigo-400 transition-colors uppercase tracking-wide text-slate-400" data-target="experience">Experience</button>
-                <button onclick="scrollToSection('achievements')" class="nav-item hover:text-indigo-400 transition-colors uppercase tracking-wide text-slate-400" data-target="achievements">Awards</button>
-                <button onclick="scrollToSection('contact')" class="nav-item hover:text-indigo-400 transition-colors uppercase tracking-wide text-slate-400" data-target="contact">Contact</button>
+
+            <div class="hidden xl:flex space-x-5 text-[11px] font-bold tracking-widest text-slate-400">
+                <button onclick="scrollToSection('cover')"
+                    class="nav-item hover:text-indigo-400 transition-colors uppercase"
+                    data-target="cover">COVER</button>
+                <button onclick="scrollToSection('about')"
+                    class="nav-item hover:text-indigo-400 transition-colors uppercase"
+                    data-target="about">ABOUT</button>
+                <button onclick="scrollToSection('education')"
+                    class="nav-item hover:text-indigo-400 transition-colors uppercase"
+                    data-target="education">EDUCATION</button>
+                <button onclick="scrollToSection('skills')"
+                    class="nav-item hover:text-indigo-400 transition-colors uppercase"
+                    data-target="skills">SKILLS</button>
+                <button onclick="scrollToSection('experience')"
+                    class="nav-item hover:text-indigo-400 transition-colors uppercase" data-target="experience">WORK
+                    EXP</button>
+                <button onclick="scrollToSection('services')"
+                    class="nav-item hover:text-indigo-400 transition-colors uppercase"
+                    data-target="services">SERVICES</button>
+                <button onclick="scrollToSection('projects')"
+                    class="nav-item hover:text-indigo-400 transition-colors uppercase"
+                    data-target="projects">PROJECTS</button>
+                <button onclick="scrollToSection('achievements')"
+                    class="nav-item hover:text-indigo-400 transition-colors uppercase"
+                    data-target="achievements">ACHIEVEMENTS</button>
+                <button onclick="scrollToSection('feedback')"
+                    class="nav-item hover:text-indigo-400 transition-colors uppercase"
+                    data-target="feedback">FEEDBACK</button>
+                <button onclick="scrollToSection('contact')"
+                    class="nav-item hover:text-indigo-400 transition-colors uppercase"
+                    data-target="contact">CONTACT</button>
             </div>
 
             <div class="xl:hidden">
@@ -61,71 +120,124 @@
             </div>
         </div>
 
-        <div id="mobile-menu" class="hidden xl:hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800 absolute w-full left-0 top-16 shadow-2xl">
+        <div id="mobile-menu"
+            class="hidden xl:hidden bg-slate-950/95 backdrop-blur-xl border-b border-slate-800 absolute w-full left-0 top-16 shadow-2xl">
             <div class="flex flex-col p-6 space-y-4">
-                <button onclick="scrollToSection('home')" class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">Home</button>
-                <button onclick="scrollToSection('skills')" class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">Skills</button>
-                <button onclick="scrollToSection('projects')" class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">Projects</button>
-                <button onclick="scrollToSection('contact')" class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">Contact</button>
+                <button onclick="scrollToSection('cover')"
+                    class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">COVER</button>
+                <button onclick="scrollToSection('about')"
+                    class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">ABOUT</button>
+                <button onclick="scrollToSection('education')"
+                    class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">EDUCATION</button>
+                <button onclick="scrollToSection('skills')"
+                    class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">SKILLS</button>
+                <button onclick="scrollToSection('experience')"
+                    class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">WORK EXP</button>
+                <button onclick="scrollToSection('services')"
+                    class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">SERVICES</button>
+                <button onclick="scrollToSection('projects')"
+                    class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">PROJECTS</button>
+                <button onclick="scrollToSection('achievements')"
+                    class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">ACHIEVEMENTS</button>
+                <button onclick="scrollToSection('feedback')"
+                    class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">FEEDBACK</button>
+                <button onclick="scrollToSection('contact')"
+                    class="text-left text-sm font-medium text-slate-300 hover:text-indigo-400">CONTACT</button>
             </div>
         </div>
     </nav>
 
-    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden pt-20">
+    <section id="cover"
+        class="min-h-screen flex flex-col lg:flex-row justify-center items-center px-6 lg:px-12 relative overflow-hidden pt-24 max-w-7xl mx-auto">
         <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[100px] animate-pulse"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] animate-pulse delay-1000"></div>
+        <div
+            class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] animate-pulse delay-1000">
+        </div>
 
-        <div class="z-10 fade-in-up max-w-4xl mx-auto">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-indigo-300 uppercase bg-indigo-950/50 rounded-full border border-indigo-800/50 backdrop-blur-sm">
+        <div class="z-10 w-full lg:w-3/5 text-center lg:text-left fade-in-up order-2 lg:order-1 mt-12 lg:mt-0">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-indigo-300 uppercase bg-indigo-950/50 rounded-full border border-indigo-800/50 backdrop-blur-sm">
                 <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
                 </span>
                 Open to ML & Data Science Roles
             </div>
-            
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight leading-tight">
-                Building Intelligent Systems with <br>
-                <span class="gradient-text">Data & Deep Learning</span>
+
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-white tracking-tight leading-tight">
+                I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-500">Abdelrhman
+                    Hany</span>
             </h1>
-            
-            <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                I am <strong class="text-white">Abdelrhman Hany</strong>, a Machine Learning Engineer and AI Trainer. I specialize in turning complex data into actionable insights using Python, Computer Vision, and Cloud Technologies.
+            <h2 class="text-2xl md:text-3xl font-semibold text-slate-300 mb-6">
+                Machine Learning Engineer & AI Specialist
+            </h2>
+
+            <p class="text-lg text-slate-400 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                A Computer Science student combining academic excellence (GPA 3.83) with professional experience as an
+                AI Trainer. I specialize in turning complex data into intelligent, real-world solutions.
             </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://github.com/AbdelrhmanHany3" target="_blank" class="w-full sm:w-auto px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-medium transition-all border border-slate-700 hover:border-indigo-500/30 flex items-center justify-center gap-2 group">
-                    <i data-lucide="github" class="w-5 h-5 text-slate-400 group-hover:text-white transition-colors"></i> 
-                    <span>GitHub</span>
+
+            <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start items-center">
+                <a href="#contact" onclick="scrollToSection('contact')"
+                    class="w-full sm:w-auto px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-medium transition-all shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    <span>Contact Me</span>
                 </a>
-                
-                <a href="https://www.linkedin.com/in/abdelrhman-hany-120b60297" target="_blank" class="w-full sm:w-auto px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-medium transition-all shadow-lg shadow-indigo-500/20 flex items-center justify-center gap-2">
-                    <i data-lucide="linkedin" class="w-5 h-5"></i> 
-                    <span>LinkedIn</span>
+
+                <a href="#projects" onclick="scrollToSection('projects')"
+                    class="w-full sm:w-auto px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-medium transition-all border border-slate-700 hover:border-indigo-500/30 flex items-center justify-center gap-2 group">
+                    <i data-lucide="folder-kanban"
+                        class="w-5 h-5 text-slate-400 group-hover:text-white transition-colors"></i>
+                    <span>Projects</span>
+                </a>
+
+                <a href="https://github.com/AbdelrhmanHany3" target="_blank" title="My GitHub Profile"
+                    class="w-full sm:w-auto px-5 py-3.5 bg-transparent hover:bg-slate-800 text-slate-300 rounded-xl font-medium transition-all border border-slate-700 hover:border-indigo-500/30 flex items-center justify-center gap-2 group">
+                    <i data-lucide="github" class="w-5 h-5 text-slate-400 group-hover:text-white transition-colors"></i>
+                    <span class="sm:hidden lg:inline">GitHub</span>
                 </a>
             </div>
         </div>
 
-        <div class="absolute bottom-10 animate-bounce cursor-pointer text-slate-600 hover:text-indigo-400 transition-colors" onclick="scrollToSection('about')">
+        <div class="z-10 w-full lg:w-2/5 flex justify-center fade-in-up order-1 lg:order-2"
+            style="animation-delay: 0.2s;">
+            <div class="relative w-64 h-64 md:w-80 md:h-80 group">
+                <div
+                    class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-blue-500 rounded-full blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 animate-pulse">
+                </div>
+                <img src="profile.png" alt="Abdelrhman Hany"
+                    class="relative w-full h-full object-cover rounded-full border-4 border-slate-800 shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                    onerror="this.src='https://ui-avatars.com/api/?name=Abdelrhman+Hany&size=512&background=0D1117&color=818CF8'">
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer text-slate-600 hover:text-indigo-400 transition-colors"
+            onclick="scrollToSection('about')">
             <i data-lucide="arrow-down" class="w-6 h-6"></i>
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-slate-900/30 border-y border-slate-800/50">
+    <section id="about" class="py-24 bg-slate-900/30 border-t border-slate-800/50">
         <div class="max-w-4xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-8">
                 <div class="h-px bg-slate-800 flex-1"></div>
-                <h2 class="text-2xl font-bold text-white tracking-tight">About Me</h2>
+                <h2 class="text-3xl font-bold text-white tracking-tight uppercase">About</h2>
                 <div class="h-px bg-slate-800 flex-1"></div>
             </div>
-            
+
             <div class="bg-slate-800/30 p-8 md:p-10 rounded-2xl border border-slate-800 backdrop-blur-sm">
                 <p class="text-lg text-slate-300 leading-relaxed mb-8">
-                    I am a Computer Science student at <span class="text-white font-semibold">October 6 University</span> (GPA 3.83), majoring in Artificial Intelligence. My journey bridges the gap between academic theory and real-world application. 
+                    I am a Computer Science student at <span class="text-white font-semibold">October 6
+                        University</span>, majoring in Artificial Intelligence. My journey bridges the gap between
+                    academic theory and real-world application.
                     <br><br>
-                    Currently, I work as an <span class="text-indigo-400 font-semibold">AI Trainer at Outlier AI</span> and I am a trainee in the <span class="text-indigo-400 font-semibold">Microsoft Machine Learning Engineer Track (DEPI)</span>. I am passionate about Computer Vision, Neural Networks, and solving problems through code.
+                    Currently, I work as an <span class="text-indigo-400 font-semibold">AI Trainer at Outlier AI</span>
+                    and I am a trainee in the <span class="text-indigo-400 font-semibold">Microsoft Machine Learning
+                        Engineer Track (DEPI)</span>. I am passionate about Computer Vision, Neural Networks, and
+                    solving problems through data.
                 </p>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
                     <div class="flex items-center gap-4 p-4 bg-slate-900/50 rounded-xl border border-slate-800">
                         <div class="p-2 bg-indigo-500/10 rounded-lg text-indigo-400"><i data-lucide="map-pin"></i></div>
@@ -135,7 +247,8 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-4 p-4 bg-slate-900/50 rounded-xl border border-slate-800">
-                        <div class="p-2 bg-indigo-500/10 rounded-lg text-indigo-400"><i data-lucide="languages"></i></div>
+                        <div class="p-2 bg-indigo-500/10 rounded-lg text-indigo-400"><i data-lucide="languages"></i>
+                        </div>
                         <div>
                             <p class="text-slate-500 text-xs uppercase tracking-wider">Languages</p>
                             <p class="text-slate-200 font-medium">Arabic (Native), English (Advanced)</p>
@@ -146,49 +259,79 @@
         </div>
     </section>
 
-    <section id="skills" class="py-24">
+    <section id="education" class="py-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="h-px bg-slate-800 flex-1"></div>
+                <h2 class="text-3xl font-bold text-white tracking-tight uppercase">Education</h2>
+                <div class="h-px bg-slate-800 flex-1"></div>
+            </div>
+
+            <div
+                class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 shadow-sm flex flex-col md:flex-row gap-6 items-center text-center md:text-left hover:border-indigo-500/50 transition-colors">
+                <div class="p-4 bg-slate-700 rounded-full text-indigo-400">
+                    <i data-lucide="graduation-cap" class="w-12 h-12"></i>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold text-white mb-1">October 6 University (O6U)</h3>
+                    <p class="text-lg text-indigo-300 mb-2">B.Sc. in Computer Science (Artificial Intelligence Major)
+                    </p>
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start text-slate-400 text-sm mt-3">
+                        <span class="flex items-center gap-1 font-semibold text-white"><i data-lucide="brain"
+                                class="w-4 h-4 text-indigo-400"></i> GPA: 3.83</span>
+                        <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> Class of
+                            2027</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 bg-slate-900/30">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Technical Arsenal</h2>
-                <p class="text-slate-400">Tools and technologies I use to build intelligent solutions</p>
+            <div class="flex items-center gap-4 mb-12">
+                <div class="h-px bg-slate-800 flex-1"></div>
+                <h2 class="text-3xl font-bold text-white tracking-tight uppercase">Skills</h2>
+                <div class="h-px bg-slate-800 flex-1"></div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
+                <div
+                    class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-3">
                             <i data-lucide="brain" class="text-indigo-400 w-6 h-6"></i>
                             <h3 class="font-bold text-white">Machine Learning</h3>
                         </div>
-                        <span class="text-xs font-mono text-indigo-300 bg-indigo-900/30 px-2 py-1 rounded">Advanced</span>
                     </div>
-                    <p class="text-slate-400 text-sm mb-4">Supervised/Unsupervised Learning, Scikit-Learn, Predictive Modeling.</p>
+                    <p class="text-slate-400 text-sm mb-4">Supervised/Unsupervised Learning, Scikit-Learn, Predictive
+                        Modeling.</p>
                     <div class="w-full h-1 bg-slate-700 rounded-full overflow-hidden">
                         <div class="h-full bg-indigo-500 w-[90%]"></div>
                     </div>
                 </div>
 
-                <div class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
+                <div
+                    class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-3">
                             <i data-lucide="layers" class="text-indigo-400 w-6 h-6"></i>
                             <h3 class="font-bold text-white">Deep Learning</h3>
                         </div>
-                        <span class="text-xs font-mono text-indigo-300 bg-indigo-900/30 px-2 py-1 rounded">Intermediate</span>
                     </div>
-                    <p class="text-slate-400 text-sm mb-4">Neural Networks, CNNs, Computer Vision, TensorFlow/PyTorch.</p>
+                    <p class="text-slate-400 text-sm mb-4">Neural Networks, Computer Vision, TensorFlow/PyTorch.</p>
                     <div class="w-full h-1 bg-slate-700 rounded-full overflow-hidden">
                         <div class="h-full bg-indigo-500 w-[80%]"></div>
                     </div>
                 </div>
 
-                <div class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
+                <div
+                    class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-3">
                             <i data-lucide="bar-chart-2" class="text-indigo-400 w-6 h-6"></i>
                             <h3 class="font-bold text-white">Data Science</h3>
                         </div>
-                        <span class="text-xs font-mono text-indigo-300 bg-indigo-900/30 px-2 py-1 rounded">Expert</span>
                     </div>
                     <p class="text-slate-400 text-sm mb-4">Pandas, NumPy, Matplotlib, Seaborn, Data Visualization.</p>
                     <div class="w-full h-1 bg-slate-700 rounded-full overflow-hidden">
@@ -196,20 +339,22 @@
                     </div>
                 </div>
 
-                <div class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
+                <div
+                    class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-3">
                             <i data-lucide="code-2" class="text-indigo-400 w-6 h-6"></i>
-                            <h3 class="font-bold text-white">Core Programming</h3>
+                            <h3 class="font-bold text-white">Programming</h3>
                         </div>
                     </div>
-                    <p class="text-slate-400 text-sm mb-4">Python (Main), C++, Java, Dart, OOP Principles.</p>
+                    <p class="text-slate-400 text-sm mb-4">Python (Main), C++, Java, Dart, OOP & Algorithms.</p>
                     <div class="w-full h-1 bg-slate-700 rounded-full overflow-hidden">
                         <div class="h-full bg-indigo-500 w-[90%]"></div>
                     </div>
                 </div>
 
-                <div class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
+                <div
+                    class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-3">
                             <i data-lucide="cloud" class="text-indigo-400 w-6 h-6"></i>
@@ -222,7 +367,8 @@
                     </div>
                 </div>
 
-                <div class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
+                <div
+                    class="group bg-slate-800/40 p-6 rounded-2xl border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/60 transition-all duration-300">
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center gap-3">
                             <i data-lucide="message-circle" class="text-indigo-400 w-6 h-6"></i>
@@ -238,108 +384,164 @@
         </div>
     </section>
 
-    <section id="projects" class="py-24 bg-slate-900/30">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Projects</h2>
-                <p class="text-slate-400">Practical applications of AI and Data Science</p>
+    <section id="experience" class="py-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="h-px bg-slate-800 flex-1"></div>
+                <h2 class="text-3xl font-bold text-white tracking-tight uppercase">Work Exp</h2>
+                <div class="h-px bg-slate-800 flex-1"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <div class="group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-900/40 to-slate-900 z-0"></div>
-                        <i data-lucide="scan-face" class="w-16 h-16 text-indigo-400 relative z-10 group-hover:scale-110 transition-transform duration-500"></i>
+            <div class="space-y-8 pl-4 border-l-2 border-slate-800 ml-4 relative">
+                <div class="relative pl-8">
+                    <div
+                        class="absolute -left-[25px] top-0 w-4 h-4 rounded-full bg-indigo-500 border-4 border-slate-950 shadow-[0_0_10px_rgba(99,102,241,0.5)]">
                     </div>
-                    <div class="p-8">
-                        <div class="flex gap-2 mb-4">
-                            <span class="text-[10px] font-bold uppercase tracking-wider bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded">Computer Vision</span>
-                            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-700 text-slate-300 px-2 py-1 rounded">Startup</span>
+                    <div
+                        class="bg-slate-800/50 p-6 rounded-xl border border-slate-800 hover:border-indigo-500/30 transition-colors">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold text-white">AI Trainer</h3>
+                            <span
+                                class="text-sm text-slate-400 bg-slate-900 px-3 py-1 rounded border border-slate-800 mt-2 sm:mt-0">June
+                                2024 – Present</span>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Kashaf (Scout)</h3>
-                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
-                            An AI-powered platform revolutionizing sports talent discovery. It uses Computer Vision algorithms to analyze video footage, tracking player performance metrics and movement patterns automatically.
-                        </p>
-                        <div class="pt-6 border-t border-slate-700 flex flex-wrap gap-2">
-                            <span class="text-xs text-slate-300 bg-slate-700/50 px-2 py-1 rounded">Python</span>
-                            <span class="text-xs text-slate-300 bg-slate-700/50 px-2 py-1 rounded">OpenCV</span>
-                            <span class="text-xs text-slate-300 bg-slate-700/50 px-2 py-1 rounded">YOLO</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-slate-900 z-0"></div>
-                        <i data-lucide="activity" class="w-16 h-16 text-blue-400 relative z-10 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    <div class="p-8">
-                        <div class="flex gap-2 mb-4">
-                            <span class="text-[10px] font-bold uppercase tracking-wider bg-blue-900/50 text-blue-300 px-2 py-1 rounded">IoT & Cloud</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">IoT Anomaly Detection</h3>
-                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
-                            A real-time monitoring system built on Microsoft Azure. It analyzes sensor data streams to detect irregularities and potential failures instantly using Machine Learning models.
-                        </p>
-                        <div class="pt-6 border-t border-slate-700 flex flex-wrap gap-2">
-                            <span class="text-xs text-slate-300 bg-slate-700/50 px-2 py-1 rounded">Azure</span>
-                            <span class="text-xs text-slate-300 bg-slate-700/50 px-2 py-1 rounded">Python</span>
-                            <span class="text-xs text-slate-300 bg-slate-700/50 px-2 py-1 rounded">Timeseries</span>
-                        </div>
+                        <h4 class="text-indigo-400 font-medium mb-4 flex items-center gap-2">
+                            <i data-lucide="building-2" class="w-4 h-4"></i> Outlier AI
+                        </h4>
+                        <ul class="list-disc list-inside space-y-2 text-slate-400 text-sm leading-relaxed">
+                            <li>Training and fine-tuning Large Language Models (LLMs) to improve reasoning and
+                                contextual accuracy.</li>
+                            <li>Evaluating AI outputs for code quality (Python/C++) and logical consistency.</li>
+                            <li>Providing high-quality human feedback (RLHF) to align AI behavior with human intent.
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
-                        <div class="absolute inset-0 bg-gradient-to-tr from-emerald-900/40 to-slate-900 z-0"></div>
-                        <i data-lucide="map" class="w-16 h-16 text-emerald-400 relative z-10 group-hover:scale-110 transition-transform duration-500"></i>
-                    </div>
-                    <div class="p-8">
-                        <div class="flex gap-2 mb-4">
-                            <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-900/50 text-emerald-300 px-2 py-1 rounded">Data Viz</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Cairo Geospatial Ops</h3>
-                        <p class="text-slate-400 text-sm mb-6 leading-relaxed">
-                            A data visualization project mapping Cairo's districts. Utilized Folium and Seaborn to create interactive heatmaps representing demographic and geographic data distributions.
-                        </p>
-                        <div class="pt-6 border-t border-slate-700 flex flex-wrap gap-2">
-                            <span class="text-xs text-slate-300 bg-slate-700/50 px-2 py-1 rounded">Pandas</span>
-                            <span class="text-xs text-slate-300 bg-slate-700/50 px-2 py-1 rounded">Folium</span>
-                            <span class="text-xs text-slate-300 bg-slate-700/50 px-2 py-1 rounded">Seaborn</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-24">
-        <div class="max-w-4xl mx-auto px-6">
+    <section id="services" class="py-24 bg-slate-900/30">
+        <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Experience</h2>
+                <div class="h-px bg-slate-800 flex-1"></div>
+                <h2 class="text-3xl font-bold text-white tracking-tight uppercase">Services</h2>
                 <div class="h-px bg-slate-800 flex-1"></div>
             </div>
-            
-            <div class="space-y-8 pl-4 border-l-2 border-slate-800 ml-4">
-                
-                <div class="relative pl-8">
-                    <div class="absolute -left-[25px] top-0 w-4 h-4 rounded-full bg-indigo-500 border-4 border-slate-950 shadow-[0_0_10px_rgba(99,102,241,0.5)]"></div>
-                    <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-800 hover:border-indigo-500/30 transition-colors">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
-                            <h3 class="text-xl font-bold text-white">AI Trainer</h3>
-                            <span class="text-sm text-slate-400 bg-slate-900 px-2 py-1 rounded border border-slate-800">June 2024 – Present</span>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div
+                    class="bg-slate-800 p-8 rounded-xl border border-slate-700 text-center hover:-translate-y-2 transition-transform duration-300 shadow-lg">
+                    <div class="inline-flex p-4 bg-slate-900 rounded-full text-indigo-400 mb-6">
+                        <i data-lucide="brain-circuit" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Machine Learning Solutions</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Building and deploying custom predictive models
+                        and algorithms tailored to solve specific business problems.</p>
+                </div>
+                <div
+                    class="bg-slate-800 p-8 rounded-xl border border-slate-700 text-center hover:-translate-y-2 transition-transform duration-300 shadow-lg">
+                    <div class="inline-flex p-4 bg-slate-900 rounded-full text-indigo-400 mb-6">
+                        <i data-lucide="bar-chart-3" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Data Analysis & Viz</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Transforming raw data into clear, actionable
+                        insights through comprehensive analysis and interactive dashboards.</p>
+                </div>
+                <div
+                    class="bg-slate-800 p-8 rounded-xl border border-slate-700 text-center hover:-translate-y-2 transition-transform duration-300 shadow-lg">
+                    <div class="inline-flex p-4 bg-slate-900 rounded-full text-indigo-400 mb-6">
+                        <i data-lucide="message-square-dashed" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Prompt Engineering & QA</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Designing complex prompts and systematically
+                        evaluating LLM outputs to ensure safety, accuracy, and performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="h-px bg-slate-800 flex-1"></div>
+                <h2 class="text-3xl font-bold text-white tracking-tight uppercase">Projects</h2>
+                <div class="h-px bg-slate-800 flex-1"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div
+                    class="group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500 hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-indigo-900/40 to-slate-900 z-0"></div>
+                        <i data-lucide="scan-face"
+                            class="w-16 h-16 text-indigo-400 relative z-10 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex gap-2 mb-4">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded">Computer
+                                Vision</span>
                         </div>
-                        <h4 class="text-indigo-400 font-medium mb-4">Outlier AI</h4>
-                        <ul class="list-disc list-inside space-y-2 text-slate-400 text-sm">
-                            <li>Training and fine-tuning Large Language Models (LLMs) to improve reasoning capabilities.</li>
-                            <li>Evaluating model outputs for code accuracy (Python/C++) and logical consistency.</li>
-                            <li>Conducting RLHF (Reinforcement Learning from Human Feedback) tasks.</li>
-                        </ul>
+                        <h3 class="text-xl font-bold text-white mb-2">Kashaf (Scout)</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-1">An AI-powered platform for sports talent
+                            discovery. It uses Computer Vision algorithms to analyze video footage and track player
+                            metrics automatically.</p>
+                        <div class="pt-4 border-t border-slate-700 flex flex-wrap gap-2">
+                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">Python</span>
+                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">OpenCV</span>
+                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">YOLO</span>
+                        </div>
                     </div>
                 </div>
 
+                <div
+                    class="group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-slate-900 z-0"></div>
+                        <i data-lucide="activity"
+                            class="w-16 h-16 text-blue-400 relative z-10 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex gap-2 mb-4">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider bg-blue-900/50 text-blue-300 px-2 py-1 rounded">IoT
+                                & Cloud</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">IoT Anomaly Detection</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-1">A real-time monitoring system on Microsoft Azure
+                            analyzing sensor streams to detect irregularities instantly using ML models.</p>
+                        <div class="pt-4 border-t border-slate-700 flex flex-wrap gap-2">
+                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">Azure</span>
+                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">Python</span>
+                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">ML</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-emerald-500 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-emerald-900/40 to-slate-900 z-0"></div>
+                        <i data-lucide="map"
+                            class="w-16 h-16 text-emerald-400 relative z-10 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex gap-2 mb-4">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-wider bg-emerald-900/50 text-emerald-300 px-2 py-1 rounded">Data
+                                Viz</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Cairo Geospatial Ops</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-1">Data visualization mapping Cairo's districts using
+                            Folium and Seaborn to create interactive heatmaps for geographic data distributions.</p>
+                        <div class="pt-4 border-t border-slate-700 flex flex-wrap gap-2">
+                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">Pandas</span>
+                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">Folium</span>
+                            <span class="text-xs text-slate-300 bg-slate-900 px-2 py-1 rounded">Seaborn</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -347,61 +549,159 @@
     <section id="achievements" class="py-24 bg-slate-900/30">
         <div class="max-w-4xl mx-auto px-6">
             <div class="flex items-center gap-4 mb-12">
-                <h2 class="text-3xl font-bold text-white tracking-tight">Awards & Education</h2>
+                <div class="h-px bg-slate-800 flex-1"></div>
+                <h2 class="text-3xl font-bold text-white tracking-tight uppercase">Achievements</h2>
                 <div class="h-px bg-slate-800 flex-1"></div>
             </div>
 
             <div class="grid gap-6">
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex items-start gap-4">
-                    <div class="p-3 bg-yellow-500/10 rounded-full text-yellow-500 mt-1">
-                        <i data-lucide="award" class="w-6 h-6"></i>
+                <div
+                    class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex items-start gap-5 hover:border-indigo-500/50 transition-colors">
+                    <div class="p-3 bg-indigo-500/10 rounded-full text-indigo-400 mt-1">
+                        <i data-lucide="medal" class="w-6 h-6"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-white">Machine Learning Engineer Track</h3>
-                        <p class="text-indigo-400 text-sm mb-2">Digital Egypt Pioneers Initiative (DEPI) - Microsoft</p>
-                        <p class="text-slate-400 text-sm">Selected for the prestigious scholarship to study advanced AI and Cloud solutions on Azure.</p>
+                        <h3 class="text-xl font-bold text-white">DEPI ML Engineer Track</h3>
+                        <p class="text-indigo-400 font-medium text-sm mb-2">Microsoft & Digital Egypt Pioneers
+                            Initiative</p>
+                        <p class="text-slate-400 text-sm leading-relaxed">Selected for this prestigious scholarship to
+                            study advanced Machine Learning and Cloud solutions on the Azure platform.</p>
                     </div>
                 </div>
 
-                <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex items-start gap-4">
-                    <div class="p-3 bg-indigo-500/10 rounded-full text-indigo-500 mt-1">
-                        <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                <div
+                    class="bg-slate-800 p-6 rounded-xl border border-slate-700 flex items-start gap-5 hover:border-indigo-500/50 transition-colors">
+                    <div class="p-3 bg-indigo-500/10 rounded-full text-indigo-400 mt-1">
+                        <i data-lucide="award" class="w-6 h-6"></i>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold text-white">Academic Excellence (GPA 3.83)</h3>
-                        <p class="text-indigo-400 text-sm mb-2">October 6 University</p>
-                        <p class="text-slate-400 text-sm">Consistently ranked among top students in the Computer Science department, specializing in AI.</p>
+                        <h3 class="text-xl font-bold text-white">Top Performance Evaluator</h3>
+                        <p class="text-indigo-400 font-medium text-sm mb-2">Outlier AI</p>
+                        <p class="text-slate-400 text-sm leading-relaxed">Consistently recognized for delivering
+                            high-quality dataset annotations and strict logical reasoning in LLM evaluations.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold text-white mb-6">Let's Work Together</h2>
-            <p class="text-slate-400 mb-12 max-w-xl mx-auto">
-                Currently available for freelance projects and job opportunities in AI and Data Science.
+    <section id="feedback" class="py-24">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="h-px bg-slate-800 flex-1"></div>
+                <h2 class="text-3xl font-bold text-white tracking-tight uppercase">Feedback</h2>
+                <div class="h-px bg-slate-800 flex-1"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 relative">
+                    <div class="absolute top-6 right-8 text-slate-700">
+                        <i data-lucide="quote" class="w-12 h-12"></i>
+                    </div>
+                    <div class="flex gap-1 text-yellow-500 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-8 leading-relaxed text-lg relative z-10">"Abdelrhman consistently
+                        delivers high-quality evaluations. His attention to detail in finding edge cases in AI responses
+                        is impressive and highly valuable."</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-indigo-400 font-bold text-xl border border-slate-700">
+                            T</div>
+                        <div>
+                            <h4 class="text-white font-bold">Team Lead</h4>
+                            <p class="text-indigo-400 text-xs">Outlier AI</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 relative">
+                    <div class="absolute top-6 right-8 text-slate-700">
+                        <i data-lucide="quote" class="w-12 h-12"></i>
+                    </div>
+                    <div class="flex gap-1 text-yellow-500 mb-6">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 italic mb-8 leading-relaxed text-lg relative z-10">"One of the brightest
+                        students in the AI major. His understanding of Machine Learning concepts and complex Data
+                        Structures is truly exceptional."</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-indigo-400 font-bold text-xl border border-slate-700">
+                            P</div>
+                        <div>
+                            <h4 class="text-white font-bold">University Professor</h4>
+                            <p class="text-indigo-400 text-xs">O6U, Computer Science Dept</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-slate-900/30">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="h-px bg-slate-800 flex-1"></div>
+                <h2 class="text-3xl font-bold text-white tracking-tight uppercase">Contact</h2>
+                <div class="h-px bg-slate-800 flex-1"></div>
+            </div>
+
+            <p class="text-slate-400 mb-12 max-w-xl mx-auto text-lg">
+                Currently available for freelance projects and job opportunities in AI and Data Science. Let's build
+                something great together.
             </p>
-            
+
             <div class="flex flex-wrap justify-center gap-6">
-                <a href="mailto:Abdelrhman23014956@gmail.com" class="bg-slate-800 px-8 py-4 rounded-xl border border-slate-700 flex items-center gap-3 hover:bg-slate-700 hover:border-indigo-500 transition-all group">
-                    <div class="p-2 bg-slate-900 rounded-lg text-indigo-400 group-hover:text-white transition-colors">
-                        <i data-lucide="mail" class="w-5 h-5"></i>
+                <a href="mailto:Abdelrhman23014956@gmail.com"
+                    class="bg-slate-800 px-6 py-4 rounded-xl border border-slate-700 flex items-center gap-4 hover:bg-slate-700 hover:border-indigo-500 transition-all group w-full sm:w-auto">
+                    <div class="p-3 bg-slate-900 rounded-lg text-indigo-400 group-hover:text-white transition-colors">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
                     </div>
                     <div class="text-left">
-                        <p class="text-xs text-slate-500 uppercase tracking-wider">Email Me</p>
-                        <p class="text-white font-medium">Abdelrhman23014956@gmail.com</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-wider font-bold">Email</p>
+                        <p class="text-white font-medium text-sm">Abdelrhman23014956@gmail.com</p>
                     </div>
                 </a>
 
-                <a href="tel:+201009918787" class="bg-slate-800 px-8 py-4 rounded-xl border border-slate-700 flex items-center gap-3 hover:bg-slate-700 hover:border-indigo-500 transition-all group">
-                    <div class="p-2 bg-slate-900 rounded-lg text-indigo-400 group-hover:text-white transition-colors">
-                        <i data-lucide="phone" class="w-5 h-5"></i>
+                <a href="tel:+201009918787"
+                    class="bg-slate-800 px-6 py-4 rounded-xl border border-slate-700 flex items-center gap-4 hover:bg-slate-700 hover:border-indigo-500 transition-all group w-full sm:w-auto">
+                    <div class="p-3 bg-slate-900 rounded-lg text-indigo-400 group-hover:text-white transition-colors">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
                     </div>
                     <div class="text-left">
-                        <p class="text-xs text-slate-500 uppercase tracking-wider">Call Me</p>
-                        <p class="text-white font-medium">+20 100 991 8787</p>
+                        <p class="text-xs text-slate-500 uppercase tracking-wider font-bold">Phone</p>
+                        <p class="text-white font-medium text-sm">+20 100 991 8787</p>
+                    </div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/abdelrhman-hany-120b60297" target="_blank"
+                    class="bg-slate-800 px-6 py-4 rounded-xl border border-slate-700 flex items-center gap-4 hover:bg-slate-700 hover:border-indigo-500 transition-all group w-full sm:w-auto">
+                    <div class="p-3 bg-slate-900 rounded-lg text-indigo-400 group-hover:text-white transition-colors">
+                        <i data-lucide="linkedin" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-slate-500 uppercase tracking-wider font-bold">LinkedIn</p>
+                        <p class="text-white font-medium text-sm">Abdelrhman Hany</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/AbdelrhmanHany3" target="_blank"
+                    class="bg-slate-800 px-6 py-4 rounded-xl border border-slate-700 flex items-center gap-4 hover:bg-slate-700 hover:border-indigo-500 transition-all group w-full sm:w-auto">
+                    <div class="p-3 bg-slate-900 rounded-lg text-indigo-400 group-hover:text-white transition-colors">
+                        <i data-lucide="github" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-slate-500 uppercase tracking-wider font-bold">GitHub</p>
+                        <p class="text-white font-medium text-sm">AbdelrhmanHany3</p>
                     </div>
                 </a>
             </div>
@@ -413,19 +713,43 @@
     </footer>
 
     <script>
+        // Initialize Icons
         lucide.createIcons();
 
+        // Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
-                navbar.classList.add('bg-slate-950/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-slate-800');
+                navbar.classList.add('bg-slate-950/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-slate-800');
                 navbar.classList.remove('bg-transparent');
             } else {
-                navbar.classList.remove('bg-slate-950/90', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-slate-800');
+                navbar.classList.remove('bg-slate-950/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-slate-800');
                 navbar.classList.add('bg-transparent');
             }
+
+            // Highlight active menu item
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('text-indigo-400');
+                item.classList.add('text-slate-400');
+                if (item.getAttribute('data-target') === current) {
+                    item.classList.add('text-indigo-400');
+                    item.classList.remove('text-slate-400');
+                }
+            });
         });
 
+        // Smooth Scroll
         function scrollToSection(id) {
             const element = document.getElementById(id);
             if (element) {
@@ -434,10 +758,12 @@
             }
         }
 
+        // Mobile Menu Toggle
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         }
     </script>
 </body>
+
 </html>
